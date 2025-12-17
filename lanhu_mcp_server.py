@@ -50,9 +50,10 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 # HTTP 请求超时时间（秒）
 HTTP_TIMEOUT = float(os.getenv("HTTP_TIMEOUT", "30"))
 
-# 截图视口尺寸
-SCREENSHOT_WIDTH = int(os.getenv("SCREENSHOT_WIDTH", "1920"))
-SCREENSHOT_HEIGHT = int(os.getenv("SCREENSHOT_HEIGHT", "1080"))
+# 浏览器视口尺寸（影响页面初始渲染，不影响全页截图）
+# 注意：截图使用 full_page=True，会自动截取完整页面，不受此限制
+VIEWPORT_WIDTH = int(os.getenv("VIEWPORT_WIDTH", "1920"))
+VIEWPORT_HEIGHT = int(os.getenv("VIEWPORT_HEIGHT", "1080"))
 
 # 调试模式
 DEBUG = os.getenv("DEBUG", "false").lower() == "true"
@@ -1607,7 +1608,8 @@ async def screenshot_page_internal(resource_dir: str, page_names: List[str], out
 
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
-        page = await browser.new_page(viewport={'width': SCREENSHOT_WIDTH, 'height': SCREENSHOT_HEIGHT})
+        # viewport 只影响初始窗口大小，不影响 full_page=True 的截图范围
+        page = await browser.new_page(viewport={'width': VIEWPORT_WIDTH, 'height': VIEWPORT_HEIGHT})
 
         for page_name in pages_to_render:
             try:
