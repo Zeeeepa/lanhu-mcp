@@ -24,24 +24,9 @@
 
 > 🎯 **不懂技术？没关系！** 只需要会复制粘贴，AI 会帮你完成所有安装步骤！
 
-**三种安装方式（由简到难）：**
+**两种安装方式（由简到难）：**
 
-### 方式 1：一键安装脚本 ⭐⭐⭐⭐⭐ (推荐小白)
-
-```bash
-# 下载项目
-git clone https://github.com/dsphper/lanhu-mcp.git
-cd lanhu-mcp
-
-# 运行一键安装（3分钟搞定）
-bash easy-install.sh        # Linux/Mac
-# 或
-easy-install.bat           # Windows
-```
-
-脚本会交互式引导你完成所有步骤，包括图文教程教你获取 Cookie！
-
-### 方式 2：让 AI 帮你 ⭐⭐⭐⭐ (最简单)
+### 方式 1：让 AI 帮你 ⭐⭐⭐⭐⭐ (最简单，推荐)
 
 直接在 Cursor 中对 AI 说：
 
@@ -59,7 +44,9 @@ AI 会自动：
 📖 AI 安装指南：[ai-install-guide.md](ai-install-guide.md)（给 AI 看的详细指导）  
 🍪 Cookie 获取教程：[GET-COOKIE-TUTORIAL.md](GET-COOKIE-TUTORIAL.md)（图文教程）
 
-### 方式 3：手动安装 ⭐⭐⭐ (有基础)
+**一键安装脚本：** 如果你想用交互式脚本安装，下载项目后运行 `bash easy-install.sh` (Linux/Mac) 或 `easy-install.bat` (Windows)
+
+### 方式 2：手动安装 ⭐⭐⭐ (有基础)
 
 继续往下看完整文档 👇
 
