@@ -856,7 +856,9 @@ black lanhu_mcp_server.py
 </p>
 
 ---
+## Star History
 
+[![Star History Chart](https://api.star-history.com/svg?repos=dsphper/lanhu-mcp&type=date&legend=top-left)](https://www.star-history.com/#dsphper/lanhu-mcp&type=date&legend=top-left)
 ## ⚠️ 免责声明
 
 本项目（Lanhu MCP Server）是一个**第三方开源项目**，由社区开发者独立开发和维护，**并非蓝湖（Lanhu）官方产品**。
