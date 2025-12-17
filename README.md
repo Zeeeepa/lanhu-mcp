@@ -114,30 +114,46 @@ AI 会自动完成：克隆项目 → 安装依赖 → 引导获取 Cookie → �
 
 ### 方式二：手动安装
 
-#### 前置要求
+**2.1 Docker 部署（推荐）**
 
-- Python 3.8+
-- Docker (可选，用于容器化部署)
-
-#### 安装步骤
+优点：环境隔离、一键部署、易于管理
 
 ```bash
-# 1. 克隆仓库
+# 1. 克隆项目
 git clone https://github.com/dsphper/lanhu-mcp.git
 cd lanhu-mcp
 
-# 2. 安装依赖
-pip install -r requirements.txt
-# 或使用 uv（推荐）
-uv pip install -r requirements.txt
+# 2. 运行安装脚本（交互式配置）
+bash setup-env.sh        # Linux/Mac
+# 或
+setup-env.bat           # Windows
 
-# 3. 一键安装脚本（可选）
+# 3. 启动服务
+docker-compose up -d
+```
+
+📖 详细文档：[Docker 部署指南](DEPLOY.md)
+
+**2.2 源码运行**
+
+前置要求：Python 3.8+
+
+```bash
+# 1. 克隆项目
+git clone https://github.com/dsphper/lanhu-mcp.git
+cd lanhu-mcp
+
+# 2. 一键安装脚本（推荐）
 bash easy-install.sh        # Linux/Mac
 # 或
 easy-install.bat           # Windows
+
+# 或手动安装依赖
+pip install -r requirements.txt
+playwright install chromium
 ```
 
-### 配置
+### 配置（源码运行需要）
 
 1. **设置蓝湖 Cookie**（必需）
 
@@ -185,33 +201,21 @@ export DEBUG="false"               # 调试模式（true/false）
 
 > 📝 完整环境变量说明请参考 `config.example.env` 文件
 
-### 运行
+### 运行服务
 
-**方式一：直接运行**
-
+**源码运行：**
 ```bash
 python lanhu_mcp_server.py
 ```
 
-服务器将在 `http://localhost:8000/mcp` 启动。
-
-**方式二：Docker 部署**
-
+**Docker 运行：**
 ```bash
-docker build -t lanhu-mcp-server .
-docker run -p 8000:8000 \
-  -e LANHU_COOKIE="your_cookie" \
-  -e FEISHU_WEBHOOK_URL="your_feishu_webhook_url" \
-  -v $(pwd)/data:/app/data \
-  lanhu-mcp-server
+docker-compose up -d              # 启动
+docker-compose logs -f            # 查看日志
+docker-compose down              # 停止
 ```
 
-或使用 docker-compose：
-
-```bash
-# 编辑 docker-compose.yml 中的环境变量
-docker-compose up -d
-```
+服务器将在 `http://localhost:8000/mcp` 启动
 
 ### 连接到 AI 客户端
 
