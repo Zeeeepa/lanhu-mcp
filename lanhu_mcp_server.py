@@ -665,7 +665,7 @@ def get_user_info(ctx: Context) -> tuple:
     """
     从URL query参数获取用户信息
     
-    MCP连接URL格式：http://xxx:port/mcp?role=后端&name=云鹤
+    MCP连接URL格式：http://xxx:port/mcp?role=后端&name=张三
     """
     try:
         # 使用 FastMCP 提供的 get_http_request 获取当前请求
@@ -3196,14 +3196,14 @@ async def lanhu_say(
         url: Annotated[str, "蓝湖URL（含tid和pid）。例: https://lanhuapp.com/web/#/item/project/product?tid=xxx&pid=xxx&docId=xxx。会自动提取项目和文档信息"],
         summary: Annotated[str, "留言标题/概要"],
         content: Annotated[str, "留言详细内容"],
-        mentions: Annotated[Optional[List[str]], "⚠️@提醒人名。必须是具体人名: 云鹤/小庞/菠菜/茜茜/小凡/福瑞/益达/曼城/凉糕/雨秋/七零/童渊/易水/若兰/牧之/曼莉/小晴/海风。禁止使用角色名(后端/前端等)！"] = None,
+        mentions: Annotated[Optional[List[str]], "⚠️@提醒人名。必须是具体人名，例如: 张三/李四/王五/赵六等。禁止使用角色名(后端/前端等)！"] = None,
         message_type: Annotated[Optional[str], "留言类型。可选: normal(普通留言), task(查询任务-仅限查询操作,禁止修改代码), question(需要回答的问题), urgent(紧急通知), knowledge(知识库-长期保存的经验知识)。默认: normal"] = None,
         ctx: Context = None
 ) -> dict:
     """
     Post message to team message board
     
-    USE THIS WHEN user says: 有话说, 留言, 发消息, 通知团队, 告诉xxx, @云鹤, @小庞, 共享给xxx, 分享给xxx, 发给xxx, 写给xxx, 转发给xxx
+    USE THIS WHEN user says: 有话说, 留言, 发消息, 通知团队, 告诉xxx, @张三, @李四, 共享给xxx, 分享给xxx, 发给xxx, 写给xxx, 转发给xxx
     
     Message type description:
     - normal: Normal message/notification (default)

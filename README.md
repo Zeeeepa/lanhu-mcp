@@ -188,7 +188,7 @@ docker-compose up -d
 {
   "mcpServers": {
     "lanhu": {
-      "url": "http://localhost:8000/mcp?role=后端&name=云鹤"
+      "url": "http://localhost:8000/mcp?role=后端&name=张三"
     }
   }
 }
@@ -486,7 +486,7 @@ AI 会自动：
 
 **发布留言：**
 ```
-@云鹤 @小庞 这个登录页面的密码校验规则需要确认一下
+@张三 @李四 这个登录页面的密码校验规则需要确认一下
 ```
 
 **查看留言：**
