@@ -18,38 +18,6 @@
 
 [快速开始](#-快速开始) • [功能特性](#-核心特性) • [使用文档](#-使用指南) • [贡献指南](CONTRIBUTING.md)
 
----
-
-## 🤖 小白用户？让 AI 帮你安装！
-
-> 🎯 **不懂技术？没关系！** 只需要会复制粘贴，AI 会帮你完成所有安装步骤！
-
-**两种安装方式（由简到难）：**
-
-### 方式 1：让 AI 帮你 ⭐⭐⭐⭐⭐ (最简单，推荐)
-
-直接在 Cursor 中对 AI 说：
-
-```
-"帮我克隆并安装 https://github.com/dsphper/lanhu-mcp 项目"
-```
-
-AI 会自动：
-- ✅ 克隆项目并打开目录
-- ✅ 检查环境并安装依赖
-- ✅ 引导你获取 Cookie（提供图文教程）
-- ✅ 配置并启动服务
-- ✅ 告诉你如何在 Cursor 中配置 MCP
-
-📖 AI 安装指南：[ai-install-guide.md](ai-install-guide.md)（给 AI 看的详细指导）  
-🍪 Cookie 获取教程：[GET-COOKIE-TUTORIAL.md](GET-COOKIE-TUTORIAL.md)（图文教程）
-
-**一键安装脚本：** 如果你想用交互式脚本安装，下载项目后运行 `bash easy-install.sh` (Linux/Mac) 或 `easy-install.bat` (Windows)
-
-### 方式 2：手动安装 ⭐⭐⭐ (有基础)
-
-继续往下看完整文档 👇
-
 </div>
 
 ---
@@ -129,23 +97,44 @@ AI 会自动：
 
 ## 🚀 快速开始
 
-### 前置要求
+> 💡 **小白用户？** 直接对 AI 说 "帮我克隆并安装 https://github.com/dsphper/lanhu-mcp 项目"，AI 会引导你完成所有步骤！
+
+### 方式一：让 AI 帮你安装（推荐）
+
+直接在 Cursor 中对 AI 说：
+```
+"帮我克隆并安装 https://github.com/dsphper/lanhu-mcp 项目"
+```
+
+AI 会自动完成：克隆项目 → 安装依赖 → 引导获取 Cookie → 配置并启动服务
+
+📖 参考文档：[AI 安装指南](ai-install-guide.md) • [Cookie 获取教程](GET-COOKIE-TUTORIAL.md)
+
+---
+
+### 方式二：手动安装
+
+#### 前置要求
 
 - Python 3.8+
 - Docker (可选，用于容器化部署)
 
-### 安装
+#### 安装步骤
 
 ```bash
-# 克隆仓库
+# 1. 克隆仓库
 git clone https://github.com/dsphper/lanhu-mcp.git
 cd lanhu-mcp
 
-# 安装依赖
+# 2. 安装依赖
 pip install -r requirements.txt
-
 # 或使用 uv（推荐）
 uv pip install -r requirements.txt
+
+# 3. 一键安装脚本（可选）
+bash easy-install.sh        # Linux/Mac
+# 或
+easy-install.bat           # Windows
 ```
 
 ### 配置
