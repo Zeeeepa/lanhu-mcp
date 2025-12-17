@@ -11,7 +11,7 @@ import json
 import hashlib
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
-from typing import Annotated, Optional, Union, List
+from typing import Annotated, Optional, Union, List, Any
 
 # 东八区时区（北京时间）
 CHINA_TZ = timezone(timedelta(hours=8))
@@ -3354,7 +3354,7 @@ async def lanhu_say_list(
     url: Annotated[Optional[str], "蓝湖URL或'all'。不传或传'all'=查询所有项目；传具体URL=查询单个项目"] = None,
     filter_type: Annotated[Optional[str], "筛选留言类型: normal/task/question/urgent/knowledge。不传则返回所有类型"] = None,
     search_regex: Annotated[Optional[str], "正则表达式搜索（在summary和content中匹配）。例: '测试|退款|坑'。建议使用以避免返回过多消息"] = None,
-    limit: Annotated[Optional[int], "限制返回消息数量（防止上下文爆炸）。不传则不限制"] = None,
+    limit: Annotated[Any, "限制返回消息数量（防止上下文爆炸）。不传则不限制"] = None,
     ctx: Context = None
 ) -> dict:
     """
@@ -3408,6 +3408,15 @@ async def lanhu_say_list(
                 "message": f"无效的正则表达式: {search_regex}",
                 "error": str(e)
             }
+    
+    # 处理limit参数 - 自动转换为整数
+    if limit is not None:
+        try:
+            limit = int(limit)
+            if limit <= 0:
+                return {"status": "error", "message": "limit 必须是正整数"}
+        except (ValueError, TypeError):
+            return {"status": "error", "message": f"limit 类型错误，期望整数，实际类型: {type(limit).__name__}"}
     
     # 全局查询模式
     if not url or url.lower() == 'all':
@@ -3605,7 +3614,7 @@ async def lanhu_say_list(
 
 @mcp.tool()
 async def lanhu_say_detail(
-        message_ids: Annotated[Union[int, List[int]], "消息ID。单个数字或数组。例: 1 或 [1,2,3]"],
+        message_ids: Annotated[Any, "消息ID。单个数字或数组。例: 1 或 [1,2,3]"],
         url: Annotated[Optional[str], "蓝湖URL。传URL则自动解析项目ID；不传则需手动提供project_id参数"] = None,
         project_id: Annotated[Optional[str], "项目ID。仅在不传url时需要，用于全局查询模式"] = None,
         ctx: Context = None
@@ -3638,9 +3647,17 @@ async def lanhu_say_detail(
     if not target_project_id:
         return {"status": "error", "message": "无法获取project_id"}
     
-    # 处理message_ids参数
-    if isinstance(message_ids, int):
-        message_ids = [message_ids]
+    # 处理message_ids参数 - 自动转换单个数字为数组
+    if isinstance(message_ids, (int, float)):
+        message_ids = [int(message_ids)]
+    elif isinstance(message_ids, list):
+        # 确保列表中的元素都是整数
+        try:
+            message_ids = [int(mid) for mid in message_ids]
+        except (ValueError, TypeError):
+            return {"status": "error", "message": "message_ids 必须是整数或整数数组"}
+    else:
+        return {"status": "error", "message": f"message_ids 类型错误，期望整数或数组，实际类型: {type(message_ids).__name__}"}
     
     # 获取消息详情
     store = MessageStore(target_project_id)
@@ -3667,7 +3684,7 @@ async def lanhu_say_detail(
 @mcp.tool()
 async def lanhu_say_edit(
         url: Annotated[str, "蓝湖URL（含tid和pid）"],
-        message_id: Annotated[int, "要编辑的消息ID"],
+        message_id: Annotated[Any, "要编辑的消息ID"],
         summary: Annotated[Optional[str], "新标题（可选，不传则不修改）"] = None,
         content: Annotated[Optional[str], "新内容（可选，不传则不修改）"] = None,
         mentions: Annotated[Optional[List[str]], "新@列表（可选，不传则不修改）"] = None,
@@ -3690,6 +3707,12 @@ async def lanhu_say_edit(
     project_id = get_project_id_from_url(url)
     if not project_id:
         return {"status": "error", "message": "无法从URL解析project_id"}
+    
+    # 处理message_id参数 - 自动转换为整数
+    try:
+        message_id = int(message_id)
+    except (ValueError, TypeError):
+        return {"status": "error", "message": f"message_id 类型错误，期望整数，实际类型: {type(message_id).__name__}"}
     
     # 验证mentions（只能@具体人名）
     if mentions:
@@ -3750,7 +3773,7 @@ async def lanhu_say_edit(
 @mcp.tool()
 async def lanhu_say_delete(
         url: Annotated[str, "蓝湖URL（含tid和pid）"],
-        message_id: Annotated[int, "要删除的消息ID"],
+        message_id: Annotated[Any, "要删除的消息ID"],
         ctx: Context = None
 ) -> dict:
     """
@@ -3770,6 +3793,12 @@ async def lanhu_say_delete(
     project_id = get_project_id_from_url(url)
     if not project_id:
         return {"status": "error", "message": "无法从URL解析project_id"}
+    
+    # 处理message_id参数 - 自动转换为整数
+    try:
+        message_id = int(message_id)
+    except (ValueError, TypeError):
+        return {"status": "error", "message": f"message_id 类型错误，期望整数，实际类型: {type(message_id).__name__}"}
     
     # 删除消息
     store = MessageStore(project_id)

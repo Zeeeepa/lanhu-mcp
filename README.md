@@ -18,6 +18,51 @@
 
 [快速开始](#-快速开始) • [功能特性](#-核心特性) • [使用文档](#-使用指南) • [贡献指南](CONTRIBUTING.md)
 
+---
+
+## 🤖 小白用户？让 AI 帮你安装！
+
+> 🎯 **不懂技术？没关系！** 只需要会复制粘贴，AI 会帮你完成所有安装步骤！
+
+**三种安装方式（由简到难）：**
+
+### 方式 1：一键安装脚本 ⭐⭐⭐⭐⭐ (推荐小白)
+
+```bash
+# 下载项目
+git clone https://github.com/dsphper/lanhu-mcp.git
+cd lanhu-mcp
+
+# 运行一键安装（3分钟搞定）
+bash easy-install.sh        # Linux/Mac
+# 或
+easy-install.bat           # Windows
+```
+
+脚本会交互式引导你完成所有步骤，包括图文教程教你获取 Cookie！
+
+### 方式 2：让 AI 帮你 ⭐⭐⭐⭐ (最简单)
+
+直接在 Cursor 中对 AI 说：
+
+```
+"帮我克隆并安装 https://github.com/dsphper/lanhu-mcp 项目"
+```
+
+AI 会自动：
+- ✅ 克隆项目并打开目录
+- ✅ 检查环境并安装依赖
+- ✅ 引导你获取 Cookie（提供图文教程）
+- ✅ 配置并启动服务
+- ✅ 告诉你如何在 Cursor 中配置 MCP
+
+📖 AI 安装指南：[ai-install-guide.md](ai-install-guide.md)（给 AI 看的详细指导）  
+🍪 Cookie 获取教程：[GET-COOKIE-TUTORIAL.md](GET-COOKIE-TUTORIAL.md)（图文教程）
+
+### 方式 3：手动安装 ⭐⭐⭐ (有基础)
+
+继续往下看完整文档 👇
+
 </div>
 
 ---
