@@ -1,4 +1,5 @@
 @echo off
+setlocal enabledelayedexpansion
 REM 蓝湖 MCP 服务器快速启动脚本（Windows）
 
 echo ======================================
@@ -65,8 +66,50 @@ if not exist ".env" (
     )
 )
 
+REM 加载并导出 .env 文件中的环境变量
 echo.
+echo 🔧 正在加载配置...
+
+REM 读取 .env 文件并设置环境变量
+for /f "usebackq tokens=1,* delims==" %%a in (".env") do (
+    set "line=%%a"
+    REM 跳过注释行和空行
+    if not "!line:~0,1!"=="#" if not "!line!"=="" (
+        REM 移除引号并设置环境变量
+        set "value=%%b"
+        set "value=!value:"=!"
+        set "%%a=!value!"
+    )
+)
+
+REM 检查 LANHU_COOKIE 是否已设置
+if not defined LANHU_COOKIE (
+    echo.
+    echo ❌ 错误：LANHU_COOKIE 未配置
+    echo 请编辑 .env 文件并设置你的蓝湖 Cookie
+    echo.
+    echo 获取 Cookie 的方法：
+    echo 1. 登录 https://lanhuapp.com
+    echo 2. 打开浏览器开发者工具（F12）
+    echo 3. 切换到 Network（网络）标签
+    echo 4. 刷新页面
+    echo 5. 点击任意请求
+    echo 6. 从请求头（Request Headers）中复制 'Cookie'
+    pause
+    exit /b 1
+)
+
+if "%LANHU_COOKIE%"=="your_lanhu_cookie_here" (
+    echo.
+    echo ❌ 错误：LANHU_COOKIE 未配置
+    echo 请编辑 .env 文件并设置你的蓝湖 Cookie
+    pause
+    exit /b 1
+)
+
 echo ✅ 配置加载完成
+call :strlen LANHU_COOKIE cookie_len
+echo    Cookie 长度: %cookie_len% 字符
 
 REM 创建数据目录
 if not exist "data" mkdir data
@@ -94,4 +137,18 @@ REM 运行服务器
 python lanhu_mcp_server.py
 
 pause
+
+REM 计算字符串长度的函数
+:strlen
+setlocal enabledelayedexpansion
+set "str=!%~1!"
+set "len=0"
+:strlen_loop
+if defined str (
+    set "str=!str:~1!"
+    set /a len+=1
+    goto :strlen_loop
+)
+endlocal & set "%~2=%len%"
+goto :eof
 

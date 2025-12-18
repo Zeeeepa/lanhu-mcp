@@ -63,8 +63,15 @@ if [ ! -f ".env" ]; then
     fi
 fi
 
-# 检查 LANHU_COOKIE 是否已设置
+# 检查并加载 .env 文件中的环境变量
+echo ""
+echo "🔧 正在加载配置..."
+
+# 使用 export 导出环境变量，让子进程（Python）可以访问
+set -a  # 自动导出所有变量
 source .env
+set +a  # 关闭自动导出
+
 if [ -z "$LANHU_COOKIE" ] || [ "$LANHU_COOKIE" = "your_lanhu_cookie_here" ]; then
     echo ""
     echo "❌ 错误：LANHU_COOKIE 未配置"
@@ -80,8 +87,8 @@ if [ -z "$LANHU_COOKIE" ] || [ "$LANHU_COOKIE" = "your_lanhu_cookie_here" ]; the
     exit 1
 fi
 
-echo ""
 echo "✅ 配置加载完成"
+echo "   Cookie 长度: ${#LANHU_COOKIE} 字符"
 
 # 创建数据目录
 mkdir -p data logs
