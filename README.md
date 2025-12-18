@@ -1,8 +1,10 @@
 <div align="center">
 
-# 🎨 Lanhu MCP Server
+# 🎨 Lanhu MCP Server | 蓝湖MCP服务器
 
 **让所有 AI 助手共享团队知识，打破 AI IDE 孤岛**
+
+**lanhumcp | 蓝湖mcp | lanhu-mcp | 蓝湖AI助手 | Lanhu AI Integration**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
@@ -25,13 +27,21 @@
 
 ## 🌟 项目亮点
 
-一个功能强大的 [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) 服务器（lanhumcp），专为 AI 编程时代设计：
+一个功能强大的 [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) 服务器，专为 AI 编程时代设计，完美支持蓝湖（Lanhu）设计协作平台。
+
+**🔍 关键词**: lanhumcp | 蓝湖mcp | lanhu-mcp-server | 蓝湖AI | Lanhu MCP | Cursor蓝湖插件 | Windsurf蓝湖 | Claude蓝湖集成 | 蓝湖API | Lanhu Axure | 蓝湖需求文档 | AI需求分析 | MCP Server | Model Context Protocol
 
 🔥 **核心创新**：
 - 📋 **智能需求分析**：自动提取 Axure 原型，三种分析模式（开发/测试/探索），需求理解达99%准确率。
 - 💬 **团队留言板**：打破 AI IDE 孤岛，让所有 AI 助手共享知识库和上下文
 - 🎨 **UI设计支持**：自动下载设计稿，智能提取切图，语义化命名
 - ⚡ **性能优化**：基于版本号的智能缓存，增量更新，并发处理
+
+🎯 **适用场景**：
+- ✅ Cursor + 蓝湖：让 Cursor AI 直接读取蓝湖需求文档和设计稿
+- ✅ Windsurf + 蓝湖：Windsurf Cascade AI 自动分析 Axure 原型
+- ✅ Claude Desktop + 蓝湖：Claude AI 提取蓝湖切图和标注
+- ✅ 任何支持 MCP 协议的 AI 开发工具
 
 🎯 **解决痛点**：
 - ❌ **旧世界**：每个开发者的 AI 独立工作，重复分析需求，无法共享经验
@@ -56,6 +66,16 @@
 - [致谢](#-致谢)
 - [联系方式](#-联系方式)
 - [路线图](#-路线图)
+
+---
+
+## 🔍 SEO 关键词索引
+
+**中文关键词**: 蓝湖mcp | lanhumcp | 蓝湖AI | 蓝湖插件 | 蓝湖API | 蓝湖Cursor | 蓝湖Windsurf | 蓝湖Claude | 蓝湖需求文档 | 蓝湖Axure | 蓝湖切图 | 蓝湖设计稿 | AI需求分析 | AI测试用例 | MCP服务器 | 模型上下文协议
+
+**English Keywords**: lanhu mcp | lanhu-mcp | lanhu ai | lanhu cursor | lanhu windsurf | lanhu claude | lanhu api | lanhu integration | mcp server | model context protocol | axure automation | design collaboration | requirement analysis | ai development tools
+
+**适用人群**: 产品经理 | 前端开发 | 后端开发 | 测试工程师 | UI设计师 | 使用Cursor的开发者 | 使用Windsurf的开发者 | 使用Claude的开发者 | AI编程爱好者
 
 ## ✨ 核心特性
 
@@ -860,6 +880,28 @@ black lanhu_mcp_server.py
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=dsphper/lanhu-mcp&type=date&legend=top-left)](https://www.star-history.com/#dsphper/lanhu-mcp&type=date&legend=top-left)
+
+---
+
+## 🏷️ 标签 Tags
+
+`lanhumcp` `蓝湖mcp` `lanhu-mcp` `蓝湖AI` `lanhu-ai` `mcp-server` `cursor-plugin` `windsurf-integration` `claude-integration` `axure-automation` `requirement-analysis` `design-collaboration` `ai-development-tools` `model-context-protocol` `蓝湖插件` `蓝湖API` `AI需求分析` `设计协作` `前端开发工具` `后端开发工具`
+
+---
+
+## 🔍 常见搜索问题 FAQ Search
+
+- **如何让 Cursor AI 读取蓝湖需求文档？** → 使用 Lanhu MCP Server
+- **Windsurf 怎么连接蓝湖？** → 配置本 MCP 服务器
+- **Claude Desktop 如何分析 Axure 原型？** → 通过 Lanhu MCP 集成
+- **蓝湖有 API 吗？** → 本项目提供 MCP 协议接口
+- **如何自动提取蓝湖切图？** → 使用本项目的切图工具
+- **AI 如何自动生成测试用例？** → 使用测试分析模式
+- **How to integrate Lanhu with Cursor?** → Install Lanhu MCP Server
+- **Lanhu API for AI tools?** → Use this MCP server
+- **Automated Axure analysis?** → Use this project
+
+---
 ## ⚠️ 免责声明
 
 本项目（Lanhu MCP Server）是一个**第三方开源项目**，由社区开发者独立开发和维护，**并非蓝湖（Lanhu）官方产品**。

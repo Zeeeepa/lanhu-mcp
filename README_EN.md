@@ -1,4 +1,6 @@
-# 🎨 Lanhu MCP Server
+# 🎨 Lanhu MCP Server | 蓝湖MCP服务器
+
+**lanhumcp | lanhu-mcp | Lanhu AI Integration | MCP Server for Lanhu**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
@@ -12,9 +14,15 @@
 
 A powerful [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server for automatically extracting and analyzing Lanhu design documents, including Axure prototypes, UI designs, image slices, with built-in team collaboration message board.
 
+**Perfect integration with Cursor AI, Windsurf AI, Claude Desktop and any MCP-compatible AI development tools.**
+
 English | [简体中文](README.md)
 
 ## ✨ Key Features
+
+**🔍 SEO Keywords**: lanhu mcp | lanhumcp | lanhu-mcp-server | lanhu ai | lanhu cursor | lanhu windsurf | lanhu claude | lanhu api | lanhu integration | lanhu axure | mcp server | model context protocol | ai requirement analysis | design collaboration tool
+
+**Perfect for**: Cursor AI Users | Windsurf Cascade Users | Claude Desktop Users | AI-powered Development | Product Managers | Frontend Developers | Backend Developers | QA Engineers | UI Designers
 
 ### 📋 Requirement Document Analysis
 - **Smart Document Extraction**: Automatically download and parse all pages, resources, and interactions from Axure prototypes
@@ -667,3 +675,23 @@ This project (Lanhu MCP Server) is a **third-party open source project**, indepe
 
 If you have any questions or suggestions, please feel free to communicate with us through [GitHub Issues](https://github.com/dsphper/lanhu-mcp/issues).
 
+---
+
+## 🏷️ Tags
+
+`lanhumcp` `lanhu-mcp` `lanhu-ai` `mcp-server` `cursor-plugin` `windsurf-integration` `claude-integration` `axure-automation` `requirement-analysis` `design-collaboration` `ai-development-tools` `model-context-protocol` `lanhu-api` `lanhu-cursor` `lanhu-windsurf` `lanhu-claude` `ai-coding-assistant` `design-handoff` `prototype-analysis`
+
+---
+
+## 🔍 Common Search Questions
+
+- **How to connect Cursor AI with Lanhu?** → Use Lanhu MCP Server
+- **Windsurf Lanhu integration?** → Configure this MCP server
+- **Claude Desktop read Axure prototypes?** → Install Lanhu MCP
+- **Lanhu API for AI tools?** → This project provides MCP interface
+- **Automated slice extraction from Lanhu?** → Use slice tools in this project
+- **AI automated test case generation?** → Use tester analysis mode
+- **蓝湖 Cursor 集成？** → 安装 Lanhu MCP Server
+- **如何让 AI 读取蓝湖需求？** → 使用本 MCP 服务器
+
+---
