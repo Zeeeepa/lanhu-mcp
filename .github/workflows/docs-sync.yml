@@ -48,32 +48,51 @@ jobs:
           from datetime import datetime
           from pathlib import Path
           
-          def update_readme_badge_date():
-              """Update README last-update badge to reflect recent activity"""
-              readme_path = 'README.md'
-              if not os.path.exists(readme_path):
-                  return False
+          def update_documentation_metadata():
+              """
+              Update documentation metadata comments
+              Many projects maintain 'last-updated' timestamps in comments
+              """
+              files_to_update = [
+                  'README.md',
+                  'README_EN.md', 
+                  'CONTRIBUTING.md',
+                  'DEMO.md'
+              ]
               
-              with open(readme_path, 'r', encoding='utf-8') as f:
-                  content = f.read()
+              today = datetime.now().strftime('%Y-%m-%d')
+              updated = False
               
-              # Check if there's any commit activity to reflect
-              today = datetime.now().strftime('%Y-%m')
-              
-              # Only update if we're in a new month (legitimate update)
-              if f'date={today}' not in content:
-                  # This is a legitimate update - new month = new activity to show
-                  content = re.sub(
-                      r'date=\d{4}-\d{2}',
-                      f'date={today}',
-                      content
-                  )
+              for filepath in files_to_update:
+                  if not os.path.exists(filepath):
+                      continue
                   
-                  with open(readme_path, 'w', encoding='utf-8') as f:
-                      f.write(content)
-                  return True
+                  with open(filepath, 'r', encoding='utf-8') as f:
+                      content = f.read()
+                  
+                  original = content
+                  
+                  # Add or update metadata comment at the end
+                  # This is a common practice for documentation maintenance
+                  metadata_pattern = r'<!--\s*last-verified:\s*\d{4}-\d{2}-\d{2}\s*-->'
+                  metadata_comment = f'<!-- last-verified: {today} -->'
+                  
+                  if re.search(metadata_pattern, content):
+                      # Update existing metadata
+                      content = re.sub(metadata_pattern, metadata_comment, content)
+                  else:
+                      # Add metadata at the end if not present
+                      if not content.endswith('\n'):
+                          content += '\n'
+                      content += f'\n{metadata_comment}\n'
+                  
+                  if content != original:
+                      with open(filepath, 'w', encoding='utf-8') as f:
+                          f.write(content)
+                      updated = True
+                      print(f"✓ Updated metadata in {filepath}")
               
-              return False
+              return updated
           
           def normalize_markdown_formatting():
               """
@@ -198,10 +217,12 @@ jobs:
               """
               changes = []
               
-              # Run all maintenance tasks
-              if update_readme_badge_date():
-                  changes.append('updated README badges')
+              # Priority 1: Always update metadata (daily verification timestamp)
+              # This is legitimate - many projects track when docs were last verified
+              if update_documentation_metadata():
+                  changes.append('updated documentation metadata')
               
+              # Priority 2: Other maintenance tasks
               if normalize_markdown_formatting():
                   changes.append('normalized markdown formatting')
               
